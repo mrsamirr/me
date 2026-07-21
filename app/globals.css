@@ -1,8 +1,120 @@
 @import "tailwindcss";
 
-:root {
+:root,
+:root.dark {
   --background: #09090b;
   --foreground: #fafafa;
+}
+
+:root.light {
+  --background: #fafafa;
+  --foreground: #18181b;
+}
+
+:root.light body {
+  color-scheme: light;
+}
+
+/* ── LIGHT THEME OVERRIDES ──────────────────────────────────────────────
+   The component hard-codes dark utilities (text-white, zinc-*, white/α
+   glass fills) with no `dark:` variants. These unlayered rules remap those
+   utilities under `:root.light` — unlayered CSS beats Tailwind's layered
+   utilities, so no !important is needed. */
+
+/* Text */
+:root.light .text-white     { color: #18181b; }
+:root.light .text-zinc-200  { color: #27272a; }
+:root.light .text-zinc-300  { color: #3f3f46; }
+:root.light .text-zinc-400  { color: #52525b; }
+:root.light .text-zinc-500  { color: #71717a; }
+:root.light .text-zinc-600  { color: #a1a1aa; }
+:root.light .text-zinc-700  { color: #c4c4cc; }
+
+/* Solid backgrounds */
+:root.light .bg-zinc-950     { background-color: #ffffff; }
+:root.light .bg-zinc-950\/95 { background-color: rgba(255,255,255,0.95); }
+:root.light .bg-zinc-950\/80 { background-color: rgba(255,255,255,0.85); }
+:root.light .bg-zinc-950\/70 { background-color: rgba(255,255,255,0.72); }
+:root.light .bg-zinc-700     { background-color: #d4d4d8; }
+:root.light .bg-zinc-100     { background-color: #27272a; }
+
+/* Solid white accent (primary CTA) → inverts to a dark pill */
+:root.light .bg-white              { background-color: #18181b; }
+:root.light .bg-white.text-zinc-950,
+:root.light .text-zinc-950         { color: #fafafa; }
+:root.light .hover\:bg-zinc-100:hover { background-color: #27272a; }
+
+/* White glass fills → subtle dark overlays */
+:root.light .bg-white\/5        { background-color: rgba(0,0,0,0.04); }
+:root.light .bg-white\/10       { background-color: rgba(0,0,0,0.06); }
+:root.light .bg-white\/\[0\.015\] { background-color: rgba(0,0,0,0.02); }
+:root.light .bg-white\/\[0\.02\]  { background-color: rgba(0,0,0,0.025); }
+:root.light .bg-white\/\[0\.03\]  { background-color: rgba(0,0,0,0.03); }
+:root.light .bg-white\/\[0\.04\]  { background-color: rgba(0,0,0,0.035); }
+:root.light .bg-white\/\[0\.05\]  { background-color: rgba(0,0,0,0.04); }
+:root.light .bg-white\/\[0\.06\]  { background-color: rgba(0,0,0,0.05); }
+:root.light .bg-white\/\[0\.08\]  { background-color: rgba(0,0,0,0.06); }
+:root.light .hover\:bg-white\/10:hover { background-color: rgba(0,0,0,0.07); }
+
+/* White borders → subtle dark borders */
+:root.light .border-white\/\[0\.03\] { border-color: rgba(0,0,0,0.06); }
+:root.light .border-white\/\[0\.05\] { border-color: rgba(0,0,0,0.07); }
+:root.light .border-white\/\[0\.06\] { border-color: rgba(0,0,0,0.08); }
+:root.light .border-white\/\[0\.07\] { border-color: rgba(0,0,0,0.09); }
+:root.light .border-white\/\[0\.08\] { border-color: rgba(0,0,0,0.09); }
+:root.light .border-white\/10        { border-color: rgba(0,0,0,0.10); }
+:root.light .border-white\/\[0\.14\] { border-color: rgba(0,0,0,0.12); }
+:root.light .border-white\/15        { border-color: rgba(0,0,0,0.13); }
+:root.light .border-white\/20        { border-color: rgba(0,0,0,0.15); }
+:root.light .border-white\/25        { border-color: rgba(0,0,0,0.18); }
+:root.light .hover\:border-white\/25:hover { border-color: rgba(0,0,0,0.18); }
+
+/* Divides & rings */
+:root.light .divide-white\/\[0\.06\] > :not([hidden]) ~ :not([hidden]) { border-color: rgba(0,0,0,0.08); }
+:root.light .divide-white\/\[0\.08\] > :not([hidden]) ~ :not([hidden]) { border-color: rgba(0,0,0,0.09); }
+:root.light .ring-white\/10 { --tw-ring-color: rgba(0,0,0,0.10); }
+:root.light .ring-white\/15 { --tw-ring-color: rgba(0,0,0,0.13); }
+
+/* Hero (#home) light treatment: swap the dark aurora canvas for a light one
+   and neutralize the dark edge-fade overlays. Text/glass utilities are handled
+   by the generic overrides above. These beat the component's inline <style>
+   (higher specificity: :root.light .hero-bg > .hero-bg). */
+:root.light #home {
+  background-color: #fafafa;
+}
+:root.light .hero-bg {
+  background: radial-gradient(ellipse at 70% 20%, #f1eefb 0%, #fafafa 62%);
+}
+/* Aurora/glow neon reads too strong on white — soften it. */
+:root.light .hero-aurora { opacity: 0.55; }
+:root.light .hero-glow   { opacity: 0.45; }
+/* Dark left/bottom edge-fades → light fades so dark text stays legible. */
+:root.light .hero-bg > [class*="bg-gradient-to-r"] {
+  background-image: linear-gradient(
+    to right, #fafafa, rgba(250, 250, 250, 0.7), rgba(250, 250, 250, 0.2)
+  );
+}
+:root.light .hero-bg > [class*="bg-gradient-to-t"] {
+  background-image: linear-gradient(
+    to top, #fafafa, transparent, rgba(250, 250, 250, 0.6)
+  );
+}
+
+/* Gradient text stops are pale -300/-400 shades tuned for a dark bg. Deepen
+   them for light mode so bg-clip-text headings keep contrast on white. */
+:root.light .from-violet-300 { --tw-gradient-from: #7c3aed; }
+:root.light .via-violet-300  { --tw-gradient-via: #7c3aed; }
+:root.light .via-fuchsia-400,
+:root.light .via-fuchsia-300 { --tw-gradient-via: #c026d3; }
+:root.light .to-fuchsia-300  { --tw-gradient-to: #c026d3; }
+:root.light .to-cyan-300     { --tw-gradient-to: #0891b2; }
+:root.light .from-sky-300    { --tw-gradient-from: #0284c7; }
+
+/* Autofill inputs match the active theme (component sets a dark autofill). */
+:root.light input:-webkit-autofill,
+:root.light textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 100px #fafafa inset !important;
+  -webkit-text-fill-color: #18181b !important;
 }
 
 @theme inline {

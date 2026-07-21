@@ -586,6 +586,42 @@ const TYPE_COLOR: Record<string, string> = {
   init:     "text-zinc-500",
 };
 
+function ProfilePhoto() {
+  const [errored, setErrored] = useState(false);
+  return (
+    <div className="relative shrink-0">
+      {/* Gradient ring glow */}
+      <div
+        className="absolute -inset-1.5 rounded-[28px] bg-gradient-to-br from-violet-500/30 via-fuchsia-500/20 to-cyan-500/30 blur-lg"
+        aria-hidden
+      />
+      <div className="relative h-56 w-56 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] sm:h-64 sm:w-64">
+        {!errored ? (
+          // Drop your photo at /public/profile.jpg (or change this src).
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src="/profile.jpg"
+            alt="Md Samer Ansari"
+            className="h-full w-full object-cover"
+            onError={() => setErrored(true)}
+          />
+        ) : (
+          <div className="flex h-full w-full flex-col items-center justify-center gap-2 text-center px-4">
+            <span className="text-4xl font-semibold tracking-tight text-white">
+              SA
+            </span>
+            <span className="text-[11px] leading-tight text-zinc-500">
+              Add your photo at
+              <br />
+              <span className="text-zinc-400">/public/profile.jpg</span>
+            </span>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function About() {
   return (
     <section id="about" className="relative py-24 px-6 lg:px-12 border-t border-white/[0.06]">
@@ -602,6 +638,27 @@ function About() {
           <p className="text-sm text-zinc-500 sm:text-right max-w-xs">
             Commit history of what matters. Newest first.
           </p>
+        </div>
+
+        {/* Intro — photo + brief */}
+        <div className="mb-14 flex flex-col items-center gap-8 sm:flex-row sm:items-center sm:gap-12">
+          <ProfilePhoto />
+          <div className="space-y-4">
+            <p className="text-lg sm:text-xl text-zinc-200 leading-relaxed">
+              I&apos;m <span className="font-medium text-white">Samer</span> — a
+              backend-leaning full-stack developer who likes the unglamorous
+              parts: APIs that don&apos;t fall over, queries that stay fast at
+              2&nbsp;a.m., and deploys that just work.
+            </p>
+            <p className="text-[15px] text-zinc-400 leading-relaxed">
+              Backend Engineer Intern at{" "}
+              <span className="text-zinc-200">LookAround.in</span> and final-year
+              CSE. I&apos;ve taken two SaaS products from an empty repo to
+              production with Next.js, Node, and FastAPI over PostgreSQL — Docker,
+              Vercel, and Cloudflare doing the shipping. Curiosity first, craft
+              second.
+            </p>
+          </div>
         </div>
 
         {/* Terminal log */}
@@ -1148,9 +1205,11 @@ function Contact() {
     setStatus("sending");
     const form = e.currentTarget;
     const data = new FormData(form);
-    // Set NEXT_PUBLIC_FORMSPREE_ID in .env.local to your Formspree form ID (formspree.io).
-    const formId = process.env.NEXT_PUBLIC_FORMSPREE_ID ?? "YOUR_FORM_ID";
-    if (formId === "YOUR_FORM_ID") {
+    // Set NEXT_PUBLIC_FORMSPREE_ID in .env.local — accepts either the bare
+    // form ID (e.g. "xqerlalj") or the full Formspree endpoint URL.
+    const raw = process.env.NEXT_PUBLIC_FORMSPREE_ID ?? "YOUR_FORM_ID";
+    const formId = raw.replace(/^https?:\/\/formspree\.io\/f\//, "");
+    if (formId === "YOUR_FORM_ID" || !formId) {
       console.warn(
         "Formspree not configured — set NEXT_PUBLIC_FORMSPREE_ID in .env.local"
       );
@@ -1419,25 +1478,31 @@ function Navbar() {
         ))}
       </ul>
 
-      {/* Hire me chip */}
-      <a
-        href="#contact"
-        className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-semibold text-white transition-all hover:bg-white/10"
-      >
-        Hire me
-        <ChevronRight className="w-3 h-3" />
-      </a>
+      {/* Right cluster: theme toggle + Hire me chip */}
+      <div className="hidden sm:flex items-center gap-2">
+        <ThemeToggle />
+        <a
+          href="#contact"
+          className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-semibold text-white transition-all hover:bg-white/10"
+        >
+          Hire me
+          <ChevronRight className="w-3 h-3" />
+        </a>
+      </div>
 
-      {/* Mobile hamburger */}
-      <button
-        className="sm:hidden flex flex-col gap-1.5 p-2"
-        onClick={() => setOpen(!open)}
-        aria-label="Toggle menu"
-      >
+      {/* Mobile: theme toggle + hamburger */}
+      <div className="flex items-center gap-2 sm:hidden">
+        <ThemeToggle />
+        <button
+          className="flex flex-col gap-1.5 p-2"
+          onClick={() => setOpen(!open)}
+          aria-label="Toggle menu"
+        >
         <span className={`h-px w-5 bg-white transition-all ${open ? "rotate-45 translate-y-[7px]" : ""}`} />
         <span className={`h-px w-5 bg-white transition-all ${open ? "opacity-0" : ""}`} />
-        <span className={`h-px w-5 bg-white transition-all ${open ? "-rotate-45 -translate-y-[7px]" : ""}`} />
-      </button>
+          <span className={`h-px w-5 bg-white transition-all ${open ? "-rotate-45 -translate-y-[7px]" : ""}`} />
+        </button>
+      </div>
 
       {/* Mobile menu */}
       {open && (

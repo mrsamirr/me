@@ -1,0 +1,14 @@
+{
+  "title": "Md Samer Ansari",
+  "tagline": "Backend Engineer Intern at LookAround.in, final-year CSE. I build backends that hold under load and products that actually ship.",
+  "colors": {
+    "background": "#09090b",
+    "foreground": "#fafafa",
+    "accent": "#888888"
+  },
+  "logo": null,
+  "faviconSrc": null,
+  "outputDir": "public/metadata",
+  "font": "Inter",
+  "url": "mrsamirr.vercel.app"
+}
