@@ -224,7 +224,7 @@ function Hero() {
               style={{ animationFillMode: "both" }}
             >
               Hello, I&apos;m{" "}
-              <span className="bg-gradient-to-br from-violet-300 via-fuchsia-400 to-cyan-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-br from-indigo-300 via-blue-400 to-sky-300 bg-clip-text text-transparent">
                 Md Samer Ansari
               </span>
               <br />
@@ -354,7 +354,7 @@ function Hero() {
                     ACTIVE
                   </div>
                   <div className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-medium tracking-wide text-zinc-300">
-                    <Star className="w-3 h-3 text-violet-400 fill-violet-400" />
+                    <Star className="w-3 h-3 text-indigo-400 fill-indigo-400" />
                     OPEN TO WORK
                   </div>
                 </div>
@@ -421,7 +421,7 @@ function Stats() {
       <div className="mx-auto grid max-w-5xl grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-4">
         {STATS.map(({ value, label }) => (
           <div key={label} className="flex flex-col items-center text-center sm:items-start sm:text-left">
-            <span className="bg-gradient-to-br from-violet-300 via-fuchsia-300 to-cyan-300 bg-clip-text text-4xl font-semibold tracking-tighter text-transparent sm:text-5xl">
+            <span className="bg-gradient-to-br from-indigo-300 via-blue-300 to-sky-300 bg-clip-text text-4xl font-semibold tracking-tighter text-transparent sm:text-5xl">
               {value}
             </span>
             <span className="mt-1.5 text-[11px] font-medium uppercase tracking-[0.14em] text-zinc-500">
@@ -582,7 +582,7 @@ const COMMITS = [
 const TYPE_COLOR: Record<string, string> = {
   feat:     "text-emerald-400",
   refactor: "text-sky-400",
-  fix:      "text-violet-400",
+  fix:      "text-indigo-400",
   init:     "text-zinc-500",
 };
 
@@ -592,7 +592,7 @@ function ProfilePhoto() {
     <div className="relative shrink-0">
       {/* Gradient ring glow */}
       <div
-        className="absolute -inset-1.5 rounded-[28px] bg-gradient-to-br from-violet-500/30 via-fuchsia-500/20 to-cyan-500/30 blur-lg"
+        className="absolute -inset-1.5 rounded-[28px] bg-gradient-to-br from-indigo-500/30 via-blue-500/20 to-sky-500/30 blur-lg"
         aria-hidden
       />
       <div className="relative h-56 w-56 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] sm:h-64 sm:w-64">
@@ -689,7 +689,7 @@ function About() {
           <div className="px-5 pb-5 space-y-0.5">
             {COMMITS.map(({ hash, type, msg }) => (
               <div key={hash} className="commit-row flex items-baseline gap-3 py-1.5 border-b border-white/[0.03] last:border-0 group">
-                <span className="shrink-0 text-[11px] text-violet-500/70 font-medium w-14">{hash}</span>
+                <span className="shrink-0 text-[11px] text-indigo-500/70 font-medium w-14">{hash}</span>
                 <span className={`shrink-0 text-[10px] font-semibold uppercase tracking-wider w-14 ${TYPE_COLOR[type] ?? "text-zinc-500"}`}>
                   {type}
                 </span>
@@ -731,7 +731,7 @@ Where I earned my reps — shipping real products.
         {EXPERIENCE.map((exp) => (
         <div key={exp.company} className="relative rounded-2xl border border-white/[0.08] bg-white/[0.02] overflow-hidden">
           {/* Ambient glow */}
-          <div className="pointer-events-none absolute -top-32 -right-32 h-64 w-64 rounded-full bg-violet-400/[0.04] blur-3xl" aria-hidden />
+          <div className="pointer-events-none absolute -top-32 -right-32 h-64 w-64 rounded-full bg-indigo-400/[0.04] blur-3xl" aria-hidden />
           <div className="pointer-events-none absolute -bottom-20 -left-20 h-48 w-48 rounded-full bg-sky-400/[0.04] blur-3xl" aria-hidden />
 
           <div className="relative z-10 p-8 sm:p-10">
@@ -755,7 +755,7 @@ Where I earned my reps — shipping real products.
                             href={href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-sm font-medium text-violet-400 hover:text-violet-300 transition-colors"
+                            className="inline-flex items-center gap-1 text-sm font-medium text-indigo-400 hover:text-indigo-300 transition-colors"
                           >
                             {label}
                             <ExternalLink className="w-3 h-3" />
@@ -763,7 +763,7 @@ Where I earned my reps — shipping real products.
                         </React.Fragment>
                       ))
                     ) : (
-                      <span className="text-sm font-medium text-violet-400">{exp.company}</span>
+                      <span className="text-sm font-medium text-indigo-400">{exp.company}</span>
                     )}
                   </div>
                 </div>
@@ -796,7 +796,7 @@ Where I earned my reps — shipping real products.
                 <ul className="space-y-2.5">
                   {exp.highlights.map((h) => (
                     <li key={h} className="flex items-start gap-2.5 text-[13px] leading-relaxed text-zinc-400">
-                      <ChevronRight className="mt-0.5 h-3.5 w-3.5 shrink-0 text-violet-500/60" />
+                      <ChevronRight className="mt-0.5 h-3.5 w-3.5 shrink-0 text-indigo-500/60" />
                       {h}
                     </li>
                   ))}
@@ -811,7 +811,7 @@ Where I earned my reps — shipping real products.
                 <ul className="space-y-2.5">
                   {exp.achievements.map((a) => (
                     <li key={a} className="flex items-start gap-2.5 text-[13px] leading-relaxed text-zinc-400">
-                      <Star className="mt-0.5 h-3.5 w-3.5 shrink-0 text-violet-400/70 fill-violet-400/40" />
+                      <Star className="mt-0.5 h-3.5 w-3.5 shrink-0 text-indigo-400/70 fill-indigo-400/40" />
                       {a}
                     </li>
                   ))}
@@ -890,7 +890,7 @@ function Skills() {
                   >
                     <span
                       className={`text-[11px] font-mono tabular-nums w-7 transition-colors ${
-                        on ? "text-violet-400" : "text-zinc-700"
+                        on ? "text-indigo-400" : "text-zinc-700"
                       }`}
                       style={{ fontFamily: "ui-monospace, 'Cascadia Code', 'Fira Code', monospace" }}
                     >
@@ -915,7 +915,7 @@ function Skills() {
               key={active}
               className="skill-detail relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8"
             >
-              <div className="pointer-events-none absolute -top-20 -right-20 h-56 w-56 rounded-full bg-violet-400/[0.04] blur-3xl" />
+              <div className="pointer-events-none absolute -top-20 -right-20 h-56 w-56 rounded-full bg-indigo-400/[0.04] blur-3xl" />
 
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-6">
@@ -996,7 +996,7 @@ function Work() {
               >
                 {/* Active accent line */}
                 <span
-                  className={`absolute left-0 top-1/2 -translate-y-1/2 h-8 w-px bg-violet-400 ${
+                  className={`absolute left-0 top-1/2 -translate-y-1/2 h-8 w-px bg-indigo-400 ${
                     on ? "opacity-100" : "opacity-0"
                   }`}
                 />
@@ -1004,7 +1004,7 @@ function Work() {
                 <div className="flex items-center gap-5 sm:gap-6 pl-4">
                   <span
                     className={`w-8 text-[11px] font-mono tabular-nums ${
-                      on ? "text-violet-400" : "text-zinc-700"
+                      on ? "text-indigo-400" : "text-zinc-700"
                     }`}
                     style={{ fontFamily: "ui-monospace, 'Cascadia Code', 'Fira Code', monospace" }}
                   >
@@ -1121,7 +1121,7 @@ function GitGraph() {
           <div className="flex flex-col items-start gap-2 sm:items-end">
             <p className="max-w-[260px] text-[13px] leading-snug text-zinc-400 sm:text-right">
               Committing{' '}
-              <span className="bg-gradient-to-r from-sky-300 via-violet-300 to-fuchsia-300 bg-clip-text font-medium text-transparent">
+              <span className="bg-gradient-to-r from-sky-300 via-indigo-300 to-blue-300 bg-clip-text font-medium text-transparent">
                 day &amp; night
               </span>
               {' '}— small commits, steady momentum.{' '}
@@ -1553,24 +1553,24 @@ export default function Portfolio() {
         html { scroll-behavior: smooth; }
 
         /* ── Hero background layers ── */
-        .hero-bg { background: radial-gradient(ellipse at 70% 20%, #140d28 0%, #07050e 65%); }
+        .hero-bg { background: radial-gradient(ellipse at 70% 20%, #0d1330 0%, #05070f 65%); }
         @keyframes auroraDrift {
           0%, 100% { transform: translate3d(0,0,0) scale(1); }
           50%      { transform: translate3d(-3%, 2%, 0) scale(1.08); }
         }
         .hero-aurora {
           background:
-            radial-gradient(40% 50% at 20% 30%, rgba(34, 211, 238, 0.10), transparent 70%),
-            radial-gradient(45% 45% at 85% 70%, rgba(129, 140, 248, 0.09), transparent 70%),
-            radial-gradient(35% 40% at 50% 50%, rgba(217, 70, 239, 0.07), transparent 70%);
+            radial-gradient(40% 50% at 20% 30%, rgba(56, 189, 248, 0.10), transparent 70%),
+            radial-gradient(45% 45% at 85% 70%, rgba(59, 130, 246, 0.09), transparent 70%),
+            radial-gradient(35% 40% at 50% 50%, rgba(99, 102, 241, 0.07), transparent 70%);
           animation: auroraDrift 18s ease-in-out infinite;
           filter: blur(40px);
         }
         .hero-glow {
           background:
-            radial-gradient(circle at 78% 28%, rgba(34, 211, 238, 0.14), transparent 45%),
-            radial-gradient(circle at 18% 82%, rgba(129, 140, 248, 0.10), transparent 50%),
-            radial-gradient(circle at 50% 100%, rgba(217, 70, 239, 0.07), transparent 55%);
+            radial-gradient(circle at 78% 28%, rgba(56, 189, 248, 0.14), transparent 45%),
+            radial-gradient(circle at 18% 82%, rgba(59, 130, 246, 0.10), transparent 50%),
+            radial-gradient(circle at 50% 100%, rgba(99, 102, 241, 0.07), transparent 55%);
           filter: blur(2px);
         }
         @keyframes detailFade {

@@ -83,7 +83,7 @@
   background-color: #fafafa;
 }
 :root.light .hero-bg {
-  background: radial-gradient(ellipse at 70% 20%, #f1eefb 0%, #fafafa 62%);
+  background: radial-gradient(ellipse at 70% 20%, #eaf0fb 0%, #fafafa 62%);
 }
 /* Aurora/glow neon reads too strong on white — soften it. */
 :root.light .hero-aurora { opacity: 0.55; }
@@ -102,12 +102,12 @@
 
 /* Gradient text stops are pale -300/-400 shades tuned for a dark bg. Deepen
    them for light mode so bg-clip-text headings keep contrast on white. */
-:root.light .from-violet-300 { --tw-gradient-from: #7c3aed; }
-:root.light .via-violet-300  { --tw-gradient-via: #7c3aed; }
-:root.light .via-fuchsia-400,
-:root.light .via-fuchsia-300 { --tw-gradient-via: #c026d3; }
-:root.light .to-fuchsia-300  { --tw-gradient-to: #c026d3; }
-:root.light .to-cyan-300     { --tw-gradient-to: #0891b2; }
+:root.light .from-indigo-300 { --tw-gradient-from: #4f46e5; }
+:root.light .via-indigo-300  { --tw-gradient-via: #4f46e5; }
+:root.light .via-blue-400,
+:root.light .via-blue-300    { --tw-gradient-via: #2563eb; }
+:root.light .to-blue-300     { --tw-gradient-to: #2563eb; }
+:root.light .to-sky-300      { --tw-gradient-to: #0284c7; }
 :root.light .from-sky-300    { --tw-gradient-from: #0284c7; }
 
 /* Autofill inputs match the active theme (component sets a dark autofill). */
